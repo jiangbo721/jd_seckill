@@ -249,7 +249,6 @@ class QrLogin:
             raise SKException('二维码下载失败')
 
         # get QR code ticket
-        ticket = None
         retry_times = 85
         for _ in range(retry_times):
             ticket = self._get_qrcode_ticket()
@@ -513,7 +512,6 @@ class JdSeckill(object):
         }
         resp = self.session.post(url=url, data=data, headers=headers)
 
-        resp_json = None
         try:
             resp_json = parse_json(resp.text)
         except Exception:
@@ -597,7 +595,6 @@ class JdSeckill(object):
             data=self.seckill_order_data.get(
                 self.sku_id),
             headers=headers)
-        resp_json = None
         try:
             resp_json = parse_json(resp.text)
         except Exception as e:
